@@ -2,6 +2,10 @@
 
 OneSolutionDealer's WebMCP Challenge demo: an automotive showroom designed for people and their agents to choose together.
 
+## Live demo
+
+[Open The Dealer's Desk](https://onesolutiondealer-webmcp-challenge.vercel.app/)
+
 ## The idea
 
 The Dealer's Desk turns a natural-language car brief into a transparent, human-controlled shopping flow:
