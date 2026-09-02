@@ -39,7 +39,7 @@ WebMCP lets a website expose capabilities instead of forcing an agent to guess t
 
 ## Demo video
 
-The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4`. Its narration uses the macOS Samantha TTS voice and follows the same flow shown in the app.
+The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4`. Its narration uses a free English neural voice (Jenny, standard Edge voice) generated without an account and follows the same flow shown in the app.
 
 ## Final checklist
 
