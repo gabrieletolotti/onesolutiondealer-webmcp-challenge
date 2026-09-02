@@ -157,8 +157,8 @@ export function searchInventory(filters: SearchFilters = {}) {
 
 export function parseSearchPrompt(prompt: string): SearchFilters {
   const normalized = prompt.toLowerCase();
-  const priceMatch = normalized.match(/(?:sotto|meno di|under|below)\s*€?\s*([\d.]+)/i);
-  const maxPrice = priceMatch ? Number(priceMatch[1].replaceAll(".", "")) : undefined;
+  const priceMatch = normalized.match(/(?:sotto|meno di|under|below)\s*€?\s*([\d.,]+)/i);
+  const maxPrice = priceMatch ? Number(priceMatch[1].replace(/[.,]/g, "")) : undefined;
 
   const fuel = normalized.includes("elettric") || normalized.includes("electric")
     ? "Electric"

@@ -100,8 +100,8 @@ function VehicleCard({
 }
 
 export default function Showroom() {
-  const [query, setQuery] = useState("Cerco un SUV automatico sotto 25.000 €");
-  const [matches, setMatches] = useState<Vehicle[]>(() => searchInventory(parseSearchPrompt("SUV automatico sotto 25.000 €")));
+  const [query, setQuery] = useState("SUV, automatic, under €25,000. I’d like to trade in my old hatchback.");
+  const [matches, setMatches] = useState<Vehicle[]>(() => searchInventory(parseSearchPrompt("SUV, automatic, under €25,000")));
   const [selectedIds, setSelectedIds] = useState<string[]>(["volvo-xc40", "cupra-formentor"]);
   const [focusedVehicle, setFocusedVehicle] = useState<Vehicle>(vehicles[0]);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -287,9 +287,9 @@ export default function Showroom() {
               <textarea value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Describe the car you are looking for" rows={3} />
             </div>
             <div className="suggestion-row">
-              <button onClick={() => { setQuery("Elettrica con più di 500 km di autonomia"); runSearch({ fuel: "Electric" }, "Found electric options"); }}>Long-range electric</button>
-              <button onClick={() => { setQuery("Diesel automatico per viaggi lunghi"); runSearch({ fuel: "Diesel", transmission: "Automatic" }, "Found long-distance options"); }}>Long-distance diesel</button>
-              <button onClick={() => { setQuery("Sotto 23.000 €"); runSearch({ maxPrice: 23000 }, "Found value options"); }}>Best value</button>
+              <button onClick={() => { setQuery("Electric with 500+ km of range"); runSearch({ fuel: "Electric" }, "Found electric options"); }}>Long-range electric</button>
+              <button onClick={() => { setQuery("Automatic diesel for long trips"); runSearch({ fuel: "Diesel", transmission: "Automatic" }, "Found long-distance options"); }}>Long-distance diesel</button>
+              <button onClick={() => { setQuery("Under €23,000"); runSearch({ maxPrice: 23000 }, "Found value options"); }}>Best value</button>
             </div>
             <button className="search-button" onClick={onManualSearch}>Find my shortlist <span>→</span></button>
             <div className="agent-footer">
@@ -345,7 +345,7 @@ export default function Showroom() {
             ))}
           </div>
         ) : (
-          <div className="no-results"><span>⌁</span><h3>Nothing in this lane yet.</h3><p>Try loosening the budget or changing the fuel type.</p><button className="text-button" onClick={() => { setQuery("Cerco un SUV automatico sotto 25.000 €"); runSearch({ body: "SUV", transmission: "Automatic", maxPrice: 25000 }, "Reset the brief"); }}>Reset the brief ↗</button></div>
+          <div className="no-results"><span>⌁</span><h3>Nothing in this lane yet.</h3><p>Try loosening the budget or changing the fuel type.</p><button className="text-button" onClick={() => { setQuery("SUV, automatic, under €25,000"); runSearch({ body: "SUV", transmission: "Automatic", maxPrice: 25000 }, "Reset the brief"); }}>Reset the brief ↗</button></div>
         )}
         {matches.length > 3 && <button className="load-more" onClick={() => setShowAll((current) => !current)}>{showAll ? "Show less" : `See all ${matches.length} matches`} <span>{showAll ? "↑" : "↓"}</span></button>}
       </section>
