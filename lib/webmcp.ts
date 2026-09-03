@@ -1,7 +1,5 @@
 import {
-  compareVehicles,
   getVehicle,
-  searchInventory,
   type SearchFilters,
   type Vehicle,
 } from "./vehicles";
@@ -108,11 +106,11 @@ export async function registerShowroomTools(handlers: Handlers, signal: AbortSig
       },
       execute: async (input) => {
         const filters = parseFilters(input);
-        const matches = searchInventory(filters);
-        handlers.onActivity({ name: "search_inventory", label: `Searched ${matches.length} vehicles` });
+        const result = handlers.onSearch(filters);
+        handlers.onActivity({ name: "search_inventory", label: `Searched ${result.matches.length} vehicles` });
         return {
-          summary: matches.length ? `${matches.length} vehicles match the current brief.` : "No vehicles match. Relax one filter and try again.",
-          matches: matches.map(vehicleSummary),
+          summary: result.summary,
+          matches: result.matches.map(vehicleSummary),
         };
       },
     },
@@ -131,10 +129,11 @@ export async function registerShowroomTools(handlers: Handlers, signal: AbortSig
       execute: async (input) => {
         const data = asRecord(input);
         const ids = Array.isArray(data.vehicleIds) ? data.vehicleIds.filter((id): id is string => typeof id === "string") : [];
-        const selected = compareVehicles(ids);
+        const result = handlers.onCompare(ids);
+        const selected = result.vehicles;
         handlers.onActivity({ name: "compare_vehicles", label: `Compared ${selected.length} vehicles` });
         return {
-          summary: selected.length ? `Comparison ready for ${selected.length} vehicles.` : "Select at least one vehicle from the current inventory.",
+          summary: result.summary,
           vehicles: selected.map(vehicleSummary),
         };
       },

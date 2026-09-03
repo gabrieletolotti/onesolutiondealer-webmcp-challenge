@@ -190,6 +190,12 @@ export default function Showroom() {
 
   const comparison = useMemo(() => compareVehicles(selectedIds), [selectedIds]);
   const visibleMatches = showAll ? matches : matches.slice(0, 3);
+  const webMcpCopy = {
+    detecting: { title: "Connecting WebMCP", detail: "Checking for page-level tool support" },
+    ready: { title: "WebMCP ready", detail: "4 tools registered · calls update this view" },
+    browser: { title: "Preview mode", detail: "Enable WebMCP to call these tools" },
+    error: { title: "WebMCP unavailable", detail: "The showroom still works without an agent" },
+  }[webMcpStatus];
 
   const updateDraft = (key: "customerName" | "preferredDay" | "preferredTime", value: string) => {
     setDraft((current) => current ? { ...current, [key]: value, saved: false } : current);
@@ -266,11 +272,11 @@ export default function Showroom() {
             <p className="eyebrow">The agent desk</p>
             <h2>Start with a thought,<br /><em>not a filter.</em></h2>
           </div>
-          <div className={`mcp-status mcp-status-${webMcpStatus}`}>
+          <div className={`mcp-status mcp-status-${webMcpStatus}`} role="status" aria-live="polite">
             <span className="status-icon">{webMcpStatus === "ready" ? "✦" : "○"}</span>
             <div>
-              <strong>{webMcpStatus === "ready" ? "WebMCP ready" : webMcpStatus === "browser" ? "Preview mode" : "Connecting WebMCP"}</strong>
-              <span>{webMcpStatus === "ready" ? "4 tools registered on this page" : "Enable the WebMCP browser flag to call tools"}</span>
+              <strong>{webMcpCopy.title}</strong>
+              <span>{webMcpCopy.detail}</span>
             </div>
           </div>
         </div>
@@ -305,7 +311,7 @@ export default function Showroom() {
               <span className="activity-count">{activity.length || "—"}</span>
             </div>
             {activity.length ? (
-              <div className="activity-list">
+              <div className="activity-list" aria-live="polite">
                 {activity.map((item, index) => (
                   <div className={`activity-row activity-row-${index}`} key={item.id}>
                     <span className="activity-check">✓</span>

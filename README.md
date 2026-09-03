@@ -26,7 +26,9 @@ The public page registers four tools when opened in a WebMCP-capable browser:
 - `evaluate_trade_in`
 - `draft_test_drive_request`
 
-The tools use the imperative WebMCP API and return structured JSON-friendly values. They execute against the visible page's synthetic inventory so an agent and a person share the same showroom context.
+The tools use the imperative WebMCP API and return structured JSON-friendly values. They execute against the visible page's synthetic inventory so an agent and a person share the same showroom context. Search and comparison calls also update the visible shortlist and comparison board, so an agent's work is never hidden from the person in the showroom.
+
+See [WEBMCP_TESTING.md](./WEBMCP_TESTING.md) for a short native-browser verification script and expected results.
 
 ## Run locally
 
@@ -45,6 +47,8 @@ npm run typecheck
 npm test
 npm run build
 ```
+
+With WebMCP enabled, the page should show `WebMCP ready`. A native agent call to `search_inventory` updates the shortlist, `compare_vehicles` updates the comparison board, `evaluate_trade_in` shows the indicative range, and `draft_test_drive_request` opens the human-review draft. All four actions remain local and draft-only.
 
 ## Repository
 

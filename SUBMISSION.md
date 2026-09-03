@@ -21,7 +21,7 @@ The experience combines a natural-language agent brief with a clear showroom UI.
 - `evaluate_trade_in` prepares an indicative range with explicit assumptions.
 - `draft_test_drive_request` prepares a request for human review.
 
-The interface shows the same work to the person: the active brief, the shortlist, the comparison board, the trade-in context, and the final handoff. Every action in the demo is draft-only: no message is sent, no appointment is booked, and no real lead is created.
+The interface shows the same work to the person: the active brief, the shortlist, the comparison board, the trade-in context, and the final handoff. Search and comparison calls update that visible state directly, so the agent and the person stay in the same showroom context. Every action in the demo is draft-only: no message is sent, no appointment is booked, and no real lead is created.
 
 ## How we built it
 
@@ -35,15 +35,15 @@ WebMCP lets a website expose capabilities instead of forcing an agent to guess t
 
 - Live demo: https://onesolutiondealer-webmcp-challenge.vercel.app/
 - Source code: https://github.com/gabrieletolotti/onesolutiondealer-webmcp-challenge
-- Demo video: add the YouTube or other public video URL after upload.
+- Demo video: https://youtu.be/sRMhJcDZYWE
 
 ## Demo video
 
-The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4`. Its narration uses a free English neural voice (Jenny, standard Edge voice) generated without an account and follows the same flow shown in the app.
+The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4` and published as an unlisted YouTube video at https://youtu.be/sRMhJcDZYWE. Its narration uses a free English neural voice (Jenny, standard Edge voice) generated without an account and follows the same flow shown in the app.
 
 ## Final checklist
 
-- [ ] Upload `artifacts/The-Dealers-Desk-WebMCP-demo.mp4` to a public or unlisted video host.
-- [ ] Paste the public video URL in the Devpost submission.
-- [ ] Confirm that the live demo and public repository links are reachable in a private browser window.
+- [x] Upload `artifacts/The-Dealers-Desk-WebMCP-demo.mp4` to an unlisted video host.
+- [x] Paste the video URL in the Devpost submission.
+- [x] Confirm that the live demo, video, and public repository links are reachable.
 - [ ] Submit the Devpost entry.
