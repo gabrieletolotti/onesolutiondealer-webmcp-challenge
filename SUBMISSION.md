@@ -35,11 +35,11 @@ WebMCP lets a website expose capabilities instead of forcing an agent to guess t
 
 - Live demo: https://onesolutiondealer-webmcp-challenge.vercel.app/
 - Source code: https://github.com/gabrieletolotti/onesolutiondealer-webmcp-challenge
-- Demo video: https://youtu.be/sRMhJcDZYWE
+- Demo video: https://youtu.be/S9c4en151VU
 
 ## Demo video
 
-The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4` and published as an unlisted YouTube video at https://youtu.be/sRMhJcDZYWE. Its narration uses a free English neural voice (Jenny, standard Edge voice) generated without an account and follows the same flow shown in the app.
+The local production-ready demo video is generated at `artifacts/The-Dealers-Desk-WebMCP-demo.mp4` and published as an unlisted YouTube video at https://youtu.be/S9c4en151VU. Its narration uses the free JollyAI Standard engine with the English (United States) Jenny neural voice and follows the same flow shown in the app.
 
 ## Final checklist
 
