@@ -139,6 +139,7 @@ export default function Showroom() {
   };
 
   const openDraft = (vehicle: Vehicle) => {
+    setFocusedVehicle(vehicle);
     setDraft({ vehicle, customerName: "", preferredDay: "Tomorrow", preferredTime: "Late afternoon", saved: false });
     addActivity({ name: "draft_test_drive_request", label: `Drafted a drive for ${vehicleName(vehicle)}` });
   };
@@ -174,6 +175,7 @@ export default function Showroom() {
       onDraftRequest: (input) => {
         const vehicle = getDraftVehicle(input.vehicleId);
         if (!vehicle) return { vehicle: null, status: "vehicle_not_found", message: "Vehicle not found in this showroom." };
+        setFocusedVehicle(vehicle);
         setDraft({
           vehicle,
           customerName: input.customerName ?? "",
