@@ -12,7 +12,7 @@ The Dealer's Desk turns a natural-language car brief into a transparent, human-c
 
 1. Search a synthetic dealer inventory with structured criteria.
 2. Compare up to three vehicles with context, not just specs.
-3. Prepare an indicative trade-in range.
+3. Simulate a fictional trade-in range from year and mileage (not a valuation).
 4. Draft a test-drive request for human review.
 
 The last action is deliberately draft-only. This demo does not send messages, create appointments, access customer data, or connect to a live dealership account.

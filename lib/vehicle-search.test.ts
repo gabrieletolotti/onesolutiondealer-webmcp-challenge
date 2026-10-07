@@ -21,4 +21,8 @@ describe("showroom search", () => {
     expect(results).toHaveLength(1);
     expect(results[0]?.model).toBe("Model 3");
   });
+
+  it("does not drop a zero budget filter", () => {
+    expect(searchInventory({ maxPrice: 0 })).toEqual([]);
+  });
 });

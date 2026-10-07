@@ -15,6 +15,8 @@ import {
   createTradeInEstimate,
   getDraftVehicle,
   registerShowroomTools,
+  preferredDays,
+  preferredTimes,
   type ToolActivity,
 } from "@/lib/webmcp";
 
@@ -314,7 +316,7 @@ export default function Showroom() {
               <div className="activity-list" aria-live="polite">
                 {activity.map((item, index) => (
                   <div className={`activity-row activity-row-${index}`} key={item.id}>
-                    <span className="activity-check">✓</span>
+                    <span className="activity-check">{item.status === "rejected" ? "!" : "✓"}</span>
                     <div><strong>{item.label}</strong><small><code>{item.name}</code> · now</small></div>
                   </div>
                 ))}
@@ -417,7 +419,7 @@ export default function Showroom() {
             <p className="modal-lede">The agent has gathered the details. Check them, then save this local demo request.</p>
             <div className="modal-vehicle"><VehicleArt vehicle={draft.vehicle} compact /><div><span className="eyebrow eyebrow-small">Selected vehicle</span><h3>{vehicleName(draft.vehicle)}</h3><p>{draft.vehicle.trim} · {formatPrice(draft.vehicle.price)}</p></div></div>
             <label>Name <input value={draft.customerName} onChange={(event) => updateDraft("customerName", event.target.value)} placeholder="Your name" /></label>
-            <div className="field-row"><label>Preferred day <select value={draft.preferredDay} onChange={(event) => updateDraft("preferredDay", event.target.value)}><option>Tomorrow</option><option>Saturday</option><option>Next week</option></select></label><label>Preferred time <select value={draft.preferredTime} onChange={(event) => updateDraft("preferredTime", event.target.value)}><option>Morning</option><option>Late afternoon</option><option>Evening</option></select></label></div>
+            <div className="field-row"><label>Preferred day <select value={draft.preferredDay} onChange={(event) => updateDraft("preferredDay", event.target.value)}>{preferredDays.map((day) => <option key={day}>{day}</option>)}</select></label><label>Preferred time <select value={draft.preferredTime} onChange={(event) => updateDraft("preferredTime", event.target.value)}>{preferredTimes.map((time) => <option key={time}>{time}</option>)}</select></label></div>
             <div className="modal-safety"><span>✓</span><p>This is a local demo. Saving does not contact the dealer or create a real appointment.</p></div>
             {draft.saved ? <div className="saved-state"><span>✦</span><div><strong>Draft saved in the showroom.</strong><p>That’s the handoff. A real dealer would take it from here.</p></div></div> : <button className="primary-button modal-submit" onClick={() => setDraft((current) => current ? { ...current, saved: true } : current)}>Save demo draft <span>→</span></button>}
           </section>

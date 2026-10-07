@@ -145,7 +145,7 @@ export function searchInventory(filters: SearchFilters = {}) {
   return vehicles.filter((vehicle) => {
     const searchable = [vehicle.brand, vehicle.model, vehicle.trim, vehicle.body, vehicle.fuel].join(" ").toLowerCase();
     const matchesQuery = !normalizedQuery || searchable.includes(normalizedQuery);
-    const matchesPrice = !filters.maxPrice || vehicle.price <= filters.maxPrice;
+    const matchesPrice = filters.maxPrice === undefined || vehicle.price <= filters.maxPrice;
     const matchesFuel = !filters.fuel || vehicle.fuel === filters.fuel;
     const matchesTransmission = !filters.transmission || vehicle.transmission === filters.transmission;
     const matchesBody = !filters.body
